@@ -11,16 +11,16 @@ app.get('/criticalcss',(req,res) => {
 	const queryObj = url.parse(req.url, true).query;
 	//res.send(queryObj.url);
 	let criticalCss = ''; 
-	const {css, html, uncritical} = critical.generate({
-	  base: 'test/',
-	  src: 'index.html',
-	  width: 1300,
-	  height: 900,
-	});
+	// const {css, html, uncritical} = critical.generate({
+	//   base: 'test/',
+	//   src: queryObj.url,//'index.html',
+	//   width: 1300,
+	//   height: 900,
+	// });
 
 	criticalCss = critical.generate({
 	    base: 'test/',
-	    src: 'index.html',
+	    src: queryObj.url,//'index.html',
 	    width: 1300,
 	    height: 900
 	}).then( ({css, html, uncritical}) => {
