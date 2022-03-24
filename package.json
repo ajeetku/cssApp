@@ -4,21 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon",
-    "start": "./node_module/.bin/netlify-lambda serve src",
-    "build": "./node_module/.bin/netlify-lambda serve src",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "critical": "^4.0.1",
     "express": "^4.17.3",
-    "netlify-lambda": "^2.0.15",
-    "serverless-http": "^2.7.0"
+    "nodemon": "^2.0.15"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "critical": "^4.0.1"
   }
 }
