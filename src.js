@@ -9,10 +9,10 @@ const app = express();
 
 var newLine = '\r\n';
 var fields = ['URL', 
-			  'Total time taken', 
-			  'download time', 
-			  'Processing time(Download time - Total time)',
-			  'HTTP Status code'];
+			  'Total_time_taken', 
+			  'Download_time', 
+			  'Processing_time(Download time_-_Total time)',
+			  'HTTP_Status_code'];
 
 app.get('/',(req,res) => {
 	const queryObj = url.parse(req.url, true).query;
@@ -20,20 +20,28 @@ app.get('/',(req,res) => {
 	if(!requrl){
 		res.status(500).json({"status": 500, message: "url not found, please send url to grab css"});
 	}
+	var startTime = Date.now()
 	criticalCss = critical.generate({
 	    base: 'test/',
 	    src:  requrl,//'index.html',//
 	    width: 1300,
 	    height: 900
 	}).then( ({css, html, uncritical}) => {
-
+		var endTime = Date.now();
+		const toCsv = {
+		    	'URL': requrl,
+		    	'Total_time_taken': endTime-startTime,
+		    	'download_time': ,
+		    	'Processing_time(Download time_-_Total time)': '',
+		    	'HTTP_Status_code': ''
+		    }
 		fs.stat('resonseReport.csv', function (err, stat) {
 		  if (err == null) {
 		    /*console.log('File exists');*/
-		    const toCsv = {
-		    	'URL': requrl,
-		    	'Total time taken': 
-		    };
+
+
+
+		    
 		    //write the actual data and end with newline
 		    var csv = json2csv(toCsv) + newLine;
 
